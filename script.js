@@ -6,6 +6,7 @@ let level = 0;
 let started = false;
 
 let h2 = document.querySelector("#level");
+let scoreDisplay = document.querySelector("#score");
 
 document.addEventListener("keypress", function () {
     if (!started) {
@@ -19,6 +20,9 @@ function nextlevel() {
     level++;
 
     h2.innerText = "Level " + level;
+    score = level - 1;
+    scoreDisplay.innerText = "Score: " + score;
+    
 
     let randColor = colors[Math.floor(Math.random() * 4)];
     gameSeq.push(randColor);
@@ -55,6 +59,8 @@ function checkAnswer(index) {
         }
     } else {
         h2.innerText = "Game Over! Press any key to restart";
+        scoreDisplay.innerText = "Score: " + score;
+        
         document.body.style.backgroundColor = "red";
 
         setTimeout(() => {
